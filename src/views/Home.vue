@@ -17,3 +17,9 @@ export default {
 	},
 };
 </script>
+
+<style scoped lang="scss">
+h1 {
+	margin-top: 1rem;
+}
+</style>
