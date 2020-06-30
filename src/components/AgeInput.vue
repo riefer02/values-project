@@ -14,7 +14,7 @@
 export default {
 	data() {
 		return {
-			slider: 45,
+			slider: 20,
 		};
 	},
 };

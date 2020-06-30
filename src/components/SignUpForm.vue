@@ -37,6 +37,9 @@
         <ParentTwoCountryOfOrigin />
         <!--       <DateOfBirthInput /> -->
         <AgeInput />
+        <FirstValuesInput />
+        <SecondValuesInput />
+        <ThirdValuesInput />
       </v-row>
       <v-row class="my-2 d-flex justify-center">
         <v-col cols="12" md="4">
@@ -53,6 +56,9 @@ import CountryOfOriginInput from "@/components/CountryOfOriginInput.vue";
 import ParentOneCountryOfOrigin from "@/components/ParentOneCountryOfOrigin.vue";
 import ParentTwoCountryOfOrigin from "@/components/ParentTwoCountryOfOrigin.vue";
 import AgeInput from "@/components/AgeInput.vue";
+import FirstValuesInput from "@/components/FirstValuesInput.vue";
+import SecondValuesInput from "@/components/SecondValuesInput.vue";
+import ThirdValuesInput from "@/components/ThirdValuesInput.vue";
 
 export default {
   components: {
@@ -61,6 +67,9 @@ export default {
     ParentOneCountryOfOrigin: ParentOneCountryOfOrigin,
     ParentTwoCountryOfOrigin: ParentTwoCountryOfOrigin,
     AgeInput: AgeInput,
+    FirstValuesInput: FirstValuesInput,
+    SecondValuesInput: SecondValuesInput,
+    ThirdValuesInput: ThirdValuesInput,
   },
   data: () => ({
     valid: false,
