@@ -32,18 +32,20 @@
         </v-col>
       </v-row>
       <v-row>
-        <CountryOfOriginInput />
-        <ParentOneCountryOfOrigin />
-        <ParentTwoCountryOfOrigin />
+        <CountryOfOriginInput v-model="countryOfOrigin" />
+        <ParentOneCountryOfOrigin v-model="parentOneCOOrigin" />
+        <ParentTwoCountryOfOrigin v-model="parentTwoCOOrigin" />
         <!--       <DateOfBirthInput /> -->
-        <AgeInput />
-        <FirstValuesInput />
-        <SecondValuesInput />
-        <ThirdValuesInput />
+        <AgeInput v-model="userAge" />
+        <FirstValuesInput v-model="values.first" />
+        <SecondValuesInput v-model="values.second" />
+        <ThirdValuesInput v-model="values.third" />
       </v-row>
       <v-row class="my-2 d-flex justify-center">
         <v-col cols="12" md="4">
-          <v-btn x-large color="#039e9e" dark>Submit</v-btn>
+          <v-btn x-large color="#039e9e" dark v-on:click="displayFormValues"
+            >Submit</v-btn
+          >
         </v-col>
       </v-row>
     </v-container>
@@ -75,6 +77,15 @@ export default {
     valid: false,
     firstname: "",
     lastname: "",
+    countryOfOrigin: "",
+    parentOneCOOrigin: "",
+    parentTwoCOOrigin: "",
+    userAge: 0,
+    values: {
+      first: "",
+      second: "",
+      third: "",
+    },
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => v.length <= 20 || "Name must be less than 20 characters",
@@ -85,6 +96,25 @@ export default {
       (v) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
   }),
+  methods: {
+    displayFormValues: function() {
+      console.log(
+        this.firstname +
+          " " +
+          this.lastname +
+          " " +
+          this.email +
+          " " +
+          this.countryOfOrigin +
+          " " +
+          this.parentOneCOOrigin +
+          " " +
+          this.parentTwoCOOrigin +
+          " " +
+          this.userAge
+      );
+    },
+  },
 };
 </script>
 

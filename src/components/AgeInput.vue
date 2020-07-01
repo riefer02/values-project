@@ -3,9 +3,10 @@
 		<v-subheader class="pl-0">User's Age</v-subheader>
 		<v-slider
 			class="pl-0"
-			v-model="slider"
 			color="teal lighten-1"
 			thumb-label="always"
+			v-model="slider"
+			@end="emitSliderValue"
 		></v-slider>
 	</v-col>
 </template>
@@ -14,8 +15,14 @@
 export default {
 	data() {
 		return {
-			slider: 20,
+			slider: 24,
 		};
+	},
+	methods: {
+		emitSliderValue: function() {
+			console.log("child value changed: " + this.slider);
+			this.$emit("input", this.slider);
+		},
 	},
 };
 </script>

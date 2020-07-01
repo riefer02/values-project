@@ -1,15 +1,24 @@
 <template>
 	<v-col class="d-flex" cols="12" md="4">
-		<v-select :items="items" label="Country of Origin"></v-select>
+		<v-select
+			:items="items"
+			label="Country of Origin"
+			v-model="selected"
+			@change="emitSelectedValue"
+		></v-select>
 	</v-col>
 </template>
 
 <script>
 export default {
 	name: "CountryOfOriginInput",
+	props: {},
 	data: () => ({
+		selected: "",
+		value: "",
 		items: [
-			"United States of America (the)",
+			"Please Select One",
+			"United States of America",
 			"Afghanistan",
 			"Albania",
 			"Algeria",
@@ -261,5 +270,11 @@ export default {
 			"Åland Islands",
 		],
 	}),
+	methods: {
+		emitSelectedValue: function() {
+			console.log("child value changed: " + this.selected);
+			this.$emit("input", this.selected);
+		},
+	},
 };
 </script>

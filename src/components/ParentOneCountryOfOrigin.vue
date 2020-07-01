@@ -3,6 +3,8 @@
 		<v-select
 			:items="items"
 			label="Parent 1 - Country of Origin"
+			v-model="selected"
+			@change="emitSelectedValue"
 		></v-select>
 	</v-col>
 </template>
@@ -11,8 +13,11 @@
 export default {
 	name: "ParentOneCountryOfOriginInput",
 	data: () => ({
+		selected: "",
+		value: "",
 		items: [
-			"United States of America (the)",
+			"Not Applicable",
+			"United States of America",
 			"Afghanistan",
 			"Albania",
 			"Algeria",
@@ -264,5 +269,11 @@ export default {
 			"Åland Islands",
 		],
 	}),
+	methods: {
+		emitSelectedValue: function() {
+			console.log("child value changed: " + this.selected);
+			this.$emit("input", this.selected);
+		},
+	},
 };
 </script>
