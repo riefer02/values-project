@@ -1,10 +1,10 @@
 <template>
-  <v-form v-model="valid">
+  <v-form v-model="valid" @submit="formSubmit">
     <v-container>
       <v-row>
         <v-col cols="12" md="4">
           <v-text-field
-            v-model="firstname"
+            v-model="form.firstname"
             :rules="nameRules"
             :counter="20"
             label="First name"
@@ -14,7 +14,7 @@
 
         <v-col cols="12" md="4">
           <v-text-field
-            v-model="lastname"
+            v-model="form.lastname"
             :rules="nameRules"
             :counter="20"
             label="Last name"
@@ -24,7 +24,7 @@
 
         <v-col cols="12" md="4">
           <v-text-field
-            v-model="email"
+            v-model="form.email"
             :rules="emailRules"
             label="E-mail"
             required
@@ -32,20 +32,18 @@
         </v-col>
       </v-row>
       <v-row>
-        <CountryOfOriginInput v-model="countryOfOrigin" />
-        <ParentOneCountryOfOrigin v-model="parentOneCOOrigin" />
-        <ParentTwoCountryOfOrigin v-model="parentTwoCOOrigin" />
+        <CountryOfOriginInput v-model="form.countryOfOrigin" />
+        <ParentOneCountryOfOrigin v-model="form.parentOneCountryOfOrigin" />
+        <ParentTwoCountryOfOrigin v-model="form.parentTwoCountryOfOrigin" />
         <!--       <DateOfBirthInput /> -->
-        <AgeInput v-model="userAge" />
-        <FirstValuesInput v-model="values.first" />
-        <SecondValuesInput v-model="values.second" />
-        <ThirdValuesInput v-model="values.third" />
+        <AgeInput v-model.number="form.userAge" />
+        <FirstValuesInput v-model="form.values.first" />
+        <SecondValuesInput v-model="form.values.second" />
+        <ThirdValuesInput v-model="form.values.third" />
       </v-row>
       <v-row class="my-2 d-flex justify-center">
         <v-col cols="12" md="4">
-          <v-btn x-large color="#039e9e" dark v-on:click="displayFormValues"
-            >Submit</v-btn
-          >
+          <v-btn x-large color="#039e9e" dark type="submit">Submit</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -75,17 +73,20 @@ export default {
   },
   data: () => ({
     valid: false,
-    firstname: "",
-    lastname: "",
-    countryOfOrigin: "",
-    parentOneCOOrigin: "",
-    parentTwoCOOrigin: "",
-    userAge: 0,
-    values: {
-      first: "",
-      second: "",
-      third: "",
+    form: {
+      firstname: "",
+      lastname: "",
+      countryOfOrigin: "",
+      parentOneCountryOfOrigin: "",
+      parentTwoCountryOfOrigin: "",
+      userAge: null,
+      values: {
+        first: "",
+        second: "",
+        third: "",
+      },
     },
+
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => v.length <= 20 || "Name must be less than 20 characters",
@@ -98,21 +99,73 @@ export default {
   }),
   methods: {
     displayFormValues: function() {
+      if (this.form.userAge === 0) {
+        return alert("please move slider to select your age.");
+      }
       console.log(
-        this.firstname +
+        this.form.firstname +
           " " +
-          this.lastname +
+          this.form.lastname +
           " " +
-          this.email +
+          this.form.email +
           " " +
-          this.countryOfOrigin +
+          this.form.countryOfOrigin +
           " " +
-          this.parentOneCOOrigin +
+          this.form.parentOneCountryOfOrigin +
           " " +
-          this.parentTwoCOOrigin +
+          this.form.parentTwoCountryOfOrigin +
           " " +
-          this.userAge
+          this.form.userAge +
+          " " +
+          this.form.values.first +
+          " " +
+          this.form.values.second +
+          " " +
+          this.form.values.third
       );
+    },
+    formSubmit(e) {
+      e.preventDefault();
+      let self = this;
+      this.axios
+        .post("http://localhost:6969/api/v1/submit", {
+          firstname: this.form.firstname,
+          lastname: this.form.lastname,
+          email: this.form.email,
+          countryOfOrigin: this.form.countryOfOrigin,
+          parentOneCountryOfOrigin: this.form.parentOneCountryOfOrigin,
+          parentTwoCountryOfOrigin: this.form.parentTwoCountryOfOrigin,
+          userAge: this.form.userAge,
+          values: {
+            first: this.form.values.first,
+            second: this.form.values.second,
+            third: this.form.values.third,
+          },
+        })
+        .then(function(response) {
+          console.log(response.data);
+          self.$router.push("/thankyou");
+        })
+        .catch(function(error) {
+          if (error.response) {
+            const listOfErrors = error.response.data.message
+              .split(".")
+              .map((row) =>
+                row
+                  .trim()
+                  .split(/\s+/)
+                  .join(" ")
+              )
+              .join("\n");
+            console.log(listOfErrors);
+            self.$store.state.errorMessage = listOfErrors;
+            self.$store.commit("errorDetected");
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("Error", error.message);
+          }
+        });
     },
   },
 };

@@ -1,12 +1,18 @@
 <template>
 	<v-col class="d-flex" cols="12" sm="4">
-		<v-select :items="items" label="3rd Value"></v-select
+		<v-select
+			:items="items"
+			label="3rd Value"
+			v-model="selected"
+			@change="emitSelectedValue"
+		></v-select
 	></v-col>
 </template>
 
 <script>
 export default {
 	data: () => ({
+		selected: "",
 		items: [
 			"Wealth",
 			"Love",
@@ -25,7 +31,14 @@ export default {
 			"Friendship",
 			"Respect",
 			"Obedience",
+			"Nature",
 		],
 	}),
+	methods: {
+		emitSelectedValue: function() {
+			console.log("child value changed: " + this.selected);
+			this.$emit("input", this.selected);
+		},
+	},
 };
 </script>

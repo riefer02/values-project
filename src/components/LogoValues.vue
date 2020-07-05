@@ -1,6 +1,11 @@
 <template>
 	<v-row justify="center">
-		<v-img src="@/assets/logo.png" max-width="220" max-height="220"></v-img>
+		<v-img
+			src="@/assets/logo.png"
+			max-width="220"
+			max-height="220"
+			alt="Values Project Logo"
+		></v-img>
 	</v-row>
 </template>
 
