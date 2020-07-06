@@ -97,33 +97,8 @@ export default {
       (v) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
   }),
+
   methods: {
-    displayFormValues: function() {
-      if (this.form.userAge === 0) {
-        return alert("please move slider to select your age.");
-      }
-      console.log(
-        this.form.firstname +
-          " " +
-          this.form.lastname +
-          " " +
-          this.form.email +
-          " " +
-          this.form.countryOfOrigin +
-          " " +
-          this.form.parentOneCountryOfOrigin +
-          " " +
-          this.form.parentTwoCountryOfOrigin +
-          " " +
-          this.form.userAge +
-          " " +
-          this.form.values.first +
-          " " +
-          this.form.values.second +
-          " " +
-          this.form.values.third
-      );
-    },
     formSubmit(e) {
       e.preventDefault();
       let self = this;
@@ -148,18 +123,18 @@ export default {
         })
         .catch(function(error) {
           if (error.response) {
-            const listOfErrors = error.response.data.message
-              .split(".")
-              .map((row) =>
-                row
-                  .trim()
-                  .split(/\s+/)
-                  .join(" ")
-              )
-              .join("\n");
-            console.log(listOfErrors);
-            self.$store.state.errorMessage = listOfErrors;
-            self.$store.commit("errorDetected");
+            // console.log(error.response.data.message);
+            const arrayOfErrors = error.response.data.message.split(".").map(
+              (el) => el.trim()
+              // .split(/\s+/)
+              // .join(" ")
+            );
+            // .join("\n");
+            // console.log(arrayOfErrors);
+            // const objectOfErrors = Object.assign({}, arrayOfErrors);
+            // console.log(objectOfErrors);
+            self.$store.commit("writeErrors", arrayOfErrors);
+            self.$store.commit("toggleModal");
           } else if (error.request) {
             console.log(error.request);
           } else {

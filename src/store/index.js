@@ -5,19 +5,20 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		showError: false,
-		count: 0,
-		errorMessage: {},
+		errorMessages: {},
+		showModal: false,
 	},
 	mutations: {
-		errorDetected(state) {
-			state.showError = true;
+		toggleModal(state) {
+			state.showModal = !state.showModal;
 		},
-		errorDiscard(state) {
-			state.showError = false;
+		writeErrors(state, errors) {
+			state.errorMessages = errors;
 		},
-		increment(state) {
-			state.count++;
+	},
+	getters: {
+		showModal: (state) => {
+			return state.showModal;
 		},
 	},
 	actions: {},
