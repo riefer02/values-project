@@ -102,8 +102,10 @@ export default {
     formSubmit(e) {
       e.preventDefault();
       let self = this;
+      // const url = window.location.origin;
+      // console.log(url);
       this.axios
-        .post("http://localhost:6969/api/v1/submit", {
+        .post(`/api/v1/submit`, {
           firstname: this.form.firstname,
           lastname: this.form.lastname,
           email: this.form.email,
