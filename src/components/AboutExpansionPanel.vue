@@ -19,17 +19,17 @@ export default {
         {
           name: "Project Overview",
           content:
-            "The Values Project is a data project designed to collect people's values. The Values Project does not ask about race or ethnicity, only age, the user's country of origin and their parent's country of origin. The project theorizes, that differences in values separates cultures from integrating.",
+            "The Values Project is a data project designed to collect people's values. The Values Project does not ask about race or ethnicity, only age, the user's country of origin and their parent's country of origin. The project theorizes that differences in values separates cultures from integrating.",
         },
         {
           name: "Project Goal",
           content:
-            "The goal of the Values Project is to find relationships between values and environmental influences. These relationships will hopefully shed insight on subtle difference between cultures so that an active conversation can be created in order to foster understanding and unity.",
+            "The goal of the Values Project is to find relationships between values and environmental influences. These relationships will hopefully shed insight on subtle differences between cultures so that an active conversation can be created in order to foster understanding and unity.",
         },
         {
           name: "Data Security",
           content:
-            "The Values Project requests user's email to ensure their are no duplicate entries and maintain authenticity of data. Names are collected to see if possible trends emerge between family names and values.",
+            "The Values Project requests user's email to ensure their are no duplicate entries and maintain authenticity of data. Names are collected to see if possible trends emerge between family names and values. User's full names will never be revealed in reports, data models, or publication.",
         },
         {
           name: "Data Modeling",

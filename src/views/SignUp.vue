@@ -1,6 +1,6 @@
 <template>
 	<div class="sign-up">
-		<h1>Sign Up</h1>
+		<h1>Submit</h1>
 		<SignUpForm />
 		<ModalWarning
 			v-if="showModal"
