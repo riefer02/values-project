@@ -32,6 +32,8 @@ export default {
 			"Respect",
 			"Obedience",
 			"Nature",
+			"Privacy",
+			"Hedonism",
 		],
 	}),
 	methods: {

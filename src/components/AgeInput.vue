@@ -15,7 +15,7 @@
 export default {
 	data() {
 		return {
-			slider: 24,
+			slider: 26,
 		};
 	},
 	methods: {
