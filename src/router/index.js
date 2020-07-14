@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import SignUp from "../views/SignUp.vue";
 import Survey from "../views/Survey.vue";
+import Data from "../views/Data.vue";
 import ThankYou from "../views/ThankYou.vue";
 
 Vue.use(VueRouter);
@@ -36,6 +37,11 @@ const routes = [
     path: "/thankyou",
     name: "ThankYou",
     component: ThankYou,
+  },
+  {
+    path: "/data",
+    name: "Data",
+    component: Data,
   },
 ];
 
