@@ -1,37 +1,48 @@
 <template>
-  <div>
-    <v-card>
-      <v-simple-table dense>
-        <template v-slot:default>
-          <thead>
-            <tr>
-              <th class="text-left inc-font-size">Value</th>
-              <th class="text-left inc-font-size">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in valueData" :key="item.name" class="text-left">
-              <td>{{ item.name || "data unknown" }}</td>
-              <td>{{ item.count || 0 }}</td>
-            </tr>
-          </tbody>
-        </template>
-      </v-simple-table>
-    </v-card>
-  </div>
+  <v-data-table
+    :headers="headers"
+    :items="valueData"
+    :items-per-page="20"
+    class="elevation-1"
+    hide-default-footer
+  >
+    <template v-slot:item="props">
+      <tr class="text-left">
+        <td>{{ props.item.name || "data unknown" }}</td>
+        <td>{{ props.item.count || 0 }}</td>
+      </tr>
+    </template>
+  </v-data-table>
 </template>
 
 <script>
 export default {
+  name: "CountedDataModel",
   data() {
     return {
-      valueData: null,
+      valueData: [],
+      headers: [
+        {
+          text: "Value",
+          align: "start",
+          sortable: true,
+          value: "name",
+        },
+        {
+          text: "Count",
+          value: "count",
+        },
+      ],
+
       error: null,
       loading: false,
     };
   },
-  created() {
-    // Fetch the dat when the iew is created and the data is already being observed
+  // created() {
+  //   // Fetch the data when the view is created and the data is already being observed
+  //   this.fetchData();
+  // },
+  mounted() {
     this.fetchData();
   },
   watch: {
@@ -42,12 +53,15 @@ export default {
     fetchData() {
       this.error = this.valueData = null;
       this.loading = true;
-
+      this.valueData = [];
+      const self = this;
       this.axios
         .get("/api/v1/data/values")
         .then((res) => {
           this.loading = false;
-          this.valueData = res.data.totalValues;
+          self.valueData = res.data.totalValues;
+          // this.$set(this.valueData, this.valueData.name, res.data.totalValues);
+          console.log("Values Data Updated");
         })
         .catch((error) => {
           this.error = error.toString();
