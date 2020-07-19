@@ -9,7 +9,7 @@
 					}}</v-list-item-title>
 				</v-list>
 			</div>
-			<v-btn x-large @click="changeModalState" ripple class="mt-2"
+			<v-btn x-large @click="changeModalState" ripple class="mt-4"
 				>Close</v-btn
 			>
 		</v-card>

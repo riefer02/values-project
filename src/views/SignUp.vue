@@ -2,10 +2,12 @@
 	<div class="sign-up">
 		<h1>Submit</h1>
 		<SignUpForm />
-		<ModalWarning
-			v-if="showModal"
-			:modalData="this.$store.state.errorMessages"
-		/>
+		<transition name="fade">
+			<ModalWarning
+				v-if="showModal"
+				:modalData="this.$store.state.errorMessages"
+			/>
+		</transition>
 	</div>
 </template>
 
@@ -26,3 +28,15 @@ export default {
 	},
 };
 </script>
+
+<style lang="css">
+.fade-enter,
+.fade-leave-to {
+	opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.2s ease-out;
+}
+</style>
