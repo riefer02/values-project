@@ -1,6 +1,5 @@
 <template>
 	<div class="sign-up">
-		<h1>Submit</h1>
 		<SignUpForm />
 		<transition name="fade">
 			<ModalWarning

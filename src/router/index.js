@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import FAQ from "../views/FAQ.vue";
 import SignUp from "../views/SignUp.vue";
-import Survey from "../views/Survey.vue";
 import Data from "../views/Data.vue";
 import ThankYou from "../views/ThankYou.vue";
 
@@ -28,11 +27,7 @@ const routes = [
     name: "SignUp",
     component: SignUp,
   },
-  {
-    path: "/survey",
-    name: "Survey",
-    component: Survey,
-  },
+
   {
     path: "/thankyou",
     name: "ThankYou",

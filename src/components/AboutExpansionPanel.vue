@@ -39,12 +39,12 @@ export default {
         {
           name: "Who will have access to the data?",
           content:
-            "Currently the Values Project is run by an independent anthropologist/developer. Details about him can be found below.",
+            "Currently, the Values Project is run by an independent anthropologist/developer. Details about him can be found below.",
         },
         {
           name: "Is my data and privacy protected?",
           content:
-            "The Values Project requests user's email to ensure their are no duplicate entries and maintain authenticity of data. Names are collected to see if possible trends emerge between family names and values. User's full names will never be revealed in reports, data models, or publication.",
+            "The Values Project requests the user's email to ensure there are no duplicate entries and maintain the authenticity of data. Names are collected to see if possible trends emerge between family names and values. User's full names will never be revealed in reports, data models, or publication.",
         },
         {
           name: "Will I have access to the data?",
@@ -59,7 +59,7 @@ export default {
         {
           name: "Who is the author/developer?",
           content:
-            "Andrew Riefenstahl has been teaching students in classrooms for over six years. His educational background in anthropology, geology and recently computer science has given him a broad base from which to approach many topics. He is also a musician, writer and avid dog dad. He enjoys researching cultural aspects of human society to find insights for a better tomorrow.",
+            "Andrew Riefenstahl has been teaching students in classrooms for over six years. His educational background in anthropology, geology, and recently computer science has given him a broad base from which to approach many topics. He is also a musician, writer, and avid dog dad. He enjoys researching cultural aspects of human society to find insights for a better tomorrow.",
         },
         {
           name: "How can I give feedback or input?",
