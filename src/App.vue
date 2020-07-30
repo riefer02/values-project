@@ -51,6 +51,17 @@ export default {
       },
     ],
   }),
+  metaInfo: {
+    title: "The Values Project",
+    meta: [
+      {
+        hid: "description",
+        name: "description",
+        content:
+          "Sociological research project seeking to understand the acquisition of an individual's cultural values through environmental influences and demographics across the world.",
+      },
+    ],
+  },
 };
 </script>
 
