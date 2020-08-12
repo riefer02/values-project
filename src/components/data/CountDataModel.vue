@@ -75,4 +75,8 @@ export default {
 th.text-left.inc-font-size {
   font-size: 1rem;
 }
+
+div.container {
+  padding-top: 500px;
+}
 </style>
